@@ -1,12 +1,13 @@
 import Link from 'next/link';
 
 const pages = {
-  home: "/",
-  shop: "/shop",
-  gifts: "/gifts",
-  blog: "/blog",
-  about: "/about",
-  signin: "/signin"
+  Home: "/",
+  Shop: "/shop",
+  About: "/about",
+  Blog: "/blog",
+  Reviews: "/reviews",
+  Contact: "/contact",
+  Profile: "/profile"
 };
 const Navbar = () => {
   return (
@@ -46,7 +47,7 @@ const Navbar = () => {
       <ul className="flex space-x-10 items-center">
         {Object.entries(pages).map(([name, path]) => (
           <li key={name}>
-          <Link href={path} className=" text-white hover:underline">{name}</Link>
+            <Link href={path} className=" text-white hover:underline">{name}</Link>
           </li>
         ))}
       </ul>
