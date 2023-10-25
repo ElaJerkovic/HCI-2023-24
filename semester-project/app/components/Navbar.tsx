@@ -1,9 +1,17 @@
 import Link from 'next/link';
 
+const pages = {
+  home: "/",
+  shop: "/shop",
+  gifts: "/gifts",
+  blog: "/blog",
+  about: "/about",
+  signin: "/signin"
+};
 const Navbar = () => {
   return (
     <nav className="bg-zinc-700 p-4">
-      <ul className="flex space-x-10 items-center">
+      {/* <ul className="flex space-x-10 items-center">
         <li>
           <Link href="/" className="text-white hover:bg-mint-100 p-4 hover:text-black">
             Home
@@ -34,6 +42,13 @@ const Navbar = () => {
             Sign In
           </Link>
         </li>
+      </ul> */}
+      <ul className="flex space-x-10 items-center">
+        {Object.entries(pages).map(([name, path]) => (
+          <li key={name}>
+          <Link href={path} className=" text-white hover:underline">{name}</Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
