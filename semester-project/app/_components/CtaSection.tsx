@@ -60,7 +60,7 @@ const CtaSection = () => (
             <p className="text-gray-600 font-lato">{CtaImage.description}</p>
           </div>
           <Link href="/shop">
-            <Button className="mt-3 hover:bg-rose-400 hover:text-white font-lato">
+            <Button className="mt-3 text-gray-800 hover:bg-rose-400 hover:text-white font-lato">
               Shop Now
             </Button>
           </Link>
