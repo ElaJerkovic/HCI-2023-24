@@ -16,20 +16,11 @@ export default async function ShopPost({ params }: { params: Params }) {
 
   return (
     <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-10">
-    {item && (
-      <div className="flex flex-wrap">
-        <div className="w-full md:w-1/2 p-4">
-          <img src={item.url} alt={item.title} className="w-full h-auto" />
-        </div>
-        <div className="w-full md:w-1/2 p-4">
-          <h1 className="text-3xl text-zinc-700 font-bold capitalize">
-            <span className="text-neutral-400">Item {item.id}:</span> {item.title}
-          </h1>
-          <p className="text-xl p-4">{item.title}</p>
-        </div>
-      </div>
-    )}
-  </main>
+      <h1 className="text-3xl text-zinc-700 font-bold p-10 capitalize">
+        <span className="text-neutral-400">Item {item.id}:</span> {item.title}
+      </h1>
+      <p className="text-xl p-10"><img src={item.url}/></p>
+    </main>
   );
 } 
 /* interface Params {
