@@ -15,7 +15,6 @@ const MainNav = ({ pages }: { pages: Page[] }) => {
             <li key={href}>
               <Link href={href}>
                 <span
-                  //tracking-wider 
                   className={cn(
                     "uppercase whitespace-nowrap font-lato font-bold text-base px-5 py-3 rounded-2xl text-brand-zinc-50 hover:bg-zinc-100",
                     {

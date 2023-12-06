@@ -10,7 +10,7 @@ export type HamburgerProps = {
 const Hamburger = ({ open, clickHandler }: HamburgerProps) => {
   return (
     <div
-      className="lg:hidden rounded-full hover:bg-zinc-200 hover:cursor-pointer p-2 z-50"
+      className="lg:hidden rounded-full hover:bg-zinc-200 text-zinc-800 hover:cursor-pointer p-2 z-50"
       onClick={() => clickHandler(!open)}
     >
       {open ? (

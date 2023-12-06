@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import Button from "../components/Button";
 import imagePromotion from "@/public/hero/pexels-cottonbro-studio-9430463.jpg";
+import Link from "next/link";
 
 
 
@@ -29,9 +30,12 @@ const PromotionSection = () => (
           <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center font-lato text-white">
             <p className="text-xl mb-4 font-lato">Limited Time Offer</p>
-            <Button className="bg-brand-pink-500 font-lato hover:bg-rose-400">
-              Shop Earrings Now
-            </Button>
+            
+            <Link href="/shop">
+              <Button className="bg-brand-pink-500 font-lato hover:bg-rose-400">
+                Shop Earrings Now
+              </Button>
+           </Link>
           </div>
         </div>
       </div>
