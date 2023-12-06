@@ -16,7 +16,7 @@ const HeroSection = () => (
       
       <div>
         {images.map((imageObj, index) => (
-          <div key={index} className="relative h-80 md:h-screen w-screen">
+          <div key={index} className="relative h-80 md:h-80 w-screen mt-10">
             <Image
               src={imageObj.image}
               alt={`Hero image ${index + 1}`}
@@ -29,16 +29,16 @@ const HeroSection = () => (
             <div className="absolute top-0 left-0 right-0 bottom-0 z-10 flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-center gap-5 max-w-xl z-10">
                     
-                    <h1 className="hidden sm:block text-3xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
+                    <h1 className="hidden md:block text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
                       Elevate Your Style with Handcrafted Polymer Clay Jewelry!
                     </h1>
-                    <h1 className="sm:hidden text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
+                    <h1 className="md:hidden text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
                        Handcrafted 
                     </h1>
-                    <h1 className="sm:hidden text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
+                    <h1 className="md:hidden text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
                        Polymer Clay 
                     </h1>
-                    <h1 className="sm:hidden text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
+                    <h1 className="md:hidden text-xl self-center text-center font-lato font-semibold text-zinc-800 uppercase tracking-wide">
                        Jewelry!
                     </h1>
                     <div className="flex gap-5 mt-4 self-center lg:self-center">
