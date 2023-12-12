@@ -16,23 +16,23 @@ type FeaturedImageObject = {
 const images: FeaturedImageObject[] = [
   {
     image: imageFeatured,
-    title: "Earrings Collection",
-    description: "Discover our exquisite earrings collection.",
+    title: "Pink Earrings",
+    description: "15€",
   },
   {
     image: imageFeatured2,
-    title: "Rings Collection",
-    description: "Explore our latest rings designs.",
+    title: "Gold Ring",
+    description: "25€",
   },
   {
     image: imageFeatured3,
-    title: "Rings Collection",
-    description: "Explore our latest rings designs.",
+    title: "Blue Earrings",
+    description: "15€",
   },
   {
     image: imageFeatured4,
-    title: "Rings Collection",
-    description: "Explore our latest rings designs.",
+    title: "Silver Ring",
+    description: "20€",
   },
 ];
 
@@ -57,6 +57,7 @@ const FeaturedSection = () => (
           key={index}
           className="relative w-80 bg-rose-200 rounded-lg shadow-lg mt-9 flex flex-col justify-center items-center"
         >
+          
           <Image
             src={FeaturedImage.image}
             alt={`Featured image ${index + 1}`}
@@ -65,7 +66,7 @@ const FeaturedSection = () => (
             className="w-full h-56 object-cover rounded-t-lg"
           />
           <div className="mt-3 text-center">
-            <h2 className="text-xl font-semibold font-lato text-zinc-800">
+            <h2 className="text-md font-semibold font-lato text-zinc-800">
               {FeaturedImage.title}
             </h2>
             <p className="text-gray-600 font-lato">{FeaturedImage.description}</p>

@@ -18,7 +18,7 @@ const images: PromotionImageObject[] = [
 const PromotionSection = () => (
     <div className="bg-white py-12">
       <div className="lg:container flex flex-col items-center">
-        <h2 className="text-3xl font-bold font-lato text-rose-400 mb-6">
+        <h2 className="text-3xl font-bold font-lato text-rose-500 mb-6">
           Special Offer: 20% Off All Earrings
         </h2>
         <div className="relative w-full lg:w-1/1 h-64">

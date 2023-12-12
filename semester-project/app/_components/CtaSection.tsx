@@ -54,10 +54,10 @@ const CtaSection = () => (
             className="w-full h-56 object-cover rounded-t-lg"
           />
           <div className="mt-3 text-center">
-            <h2 className="text-xl font-semibold font-lato text-zinc-800">
+            <h2 className="text-md font-semibold font-lato text-zinc-800">
               {CtaImage.title}
             </h2>
-            <p className="text-gray-600 font-lato">{CtaImage.description}</p>
+            <p className="text-sm text-gray-600 font-lato">{CtaImage.description}</p>
           </div>
           <Link href="/shop">
             <Button className="mt-3 text-gray-800 hover:bg-rose-400 hover:text-white font-lato">
