@@ -12,7 +12,7 @@ import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import python from "highlight.js/lib/languages/python";
 import "highlight.js/styles/github-dark.css";
-import { RichTextLinksFragment } from "@/marketing-web/app/gql/graphql";
+//import { RichTextLinksFragment } from "@/marketing-web/app/gql/graphql";
 import { HeroImage } from "../page";
 import { products } from "../productList";
 import contentfulService from "@/app/lib/contentfulClient";
@@ -21,7 +21,7 @@ hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("python", python);
 
 // SOURCE: https://www.contentful.com/blog/rendering-linked-assets-entries-in-contentful/
-function renderOptions(links: RichTextLinksFragment["links"] | undefined) {
+/*function renderOptions(links: RichTextLinksFragment["links"] | undefined) {
   if (!links) return;
 
   const entryMap = new Map();
@@ -51,7 +51,7 @@ function renderOptions(links: RichTextLinksFragment["links"] | undefined) {
       },
     },
   };
-}
+}*/
 
 interface CurrencySymbolMapping {
   [code: string]: string;
@@ -119,7 +119,7 @@ const ProductPage = async ({ params }: { params: Params }) => {
       <div className="mt-10 prose prose-h1:text-brand-purple-800">
         {documentToReactComponents(
           product.richTextDescription?.json,
-          renderOptions(product.richTextDescription?.links)
+          //renderOptions(product.richTextDescription?.links)
         )}
       </div>
     </main>
