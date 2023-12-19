@@ -43,14 +43,14 @@ const ProductPage = async ({ params }: { params: Params }) => {
         />
         <div className="flex flex-col gap-4 justify-between">
           <div className="grid grid-cols-2 gap-2">
-            {product.images?.map((image) => (
+            {product.images?.map((image: string) => (
               <div key={image} className="relative w-full h-32">
                 <Image
                   fill
                   style={{ objectFit: "cover" }}
                   className="rounded-md"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  src={image as string}
+                  src={image }
                   alt={product.name as string}
                 />
               </div>
