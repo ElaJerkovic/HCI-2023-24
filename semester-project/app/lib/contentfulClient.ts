@@ -85,7 +85,7 @@ import {
   
   interface ProductItem {
     sys: {
-      id: string;
+      id: number;
     };
     name: string;
     description: string;
@@ -201,7 +201,7 @@ import {
   };
   
   const getProductById = async (
-    id: string
+    id: number
   ): Promise<TypeProductDetailItem | null> => {
     try {
       const response = await fetch(baseUrl, {

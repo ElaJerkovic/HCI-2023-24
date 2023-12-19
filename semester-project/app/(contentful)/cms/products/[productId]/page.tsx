@@ -16,7 +16,7 @@ const currencySymbolMapping: CurrencySymbolMapping = {
 };
 
 type Params = {
-  productId: string;
+  productId: number;
 };
 
 const ProductPage = async ({ params }: { params: Params }) => {

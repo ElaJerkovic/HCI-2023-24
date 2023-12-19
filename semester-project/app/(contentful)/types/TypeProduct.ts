@@ -36,19 +36,19 @@ import { TypeCategory } from "./TypeCategory";
 export interface TypeProductListItem {
   name: string;
   id: number;
-  price: number;
-  currencyCode: "CHF" | "EUR" | "GBP" | "USD";
-  listed: boolean;
+  //price: number;
+  //currencyCode: "CHF" | "EUR" | "GBP" | "USD";
+  //listed: boolean;
   description: string;
   categories: TypeCategory[];
   heroImage: string;
-  images: string[];
-  richTextDescription?: {
+  //images: string[];
+  /*richTextDescription?: {
     json: any;
     links: any;
-  };
+  };*/
 }
-/*
+
 export interface TypeProductDetailItem extends TypeProductListItem {
   price: number;
   currencyCode: "CHF" | "EUR" | "GBP" | "USD";
@@ -58,4 +58,4 @@ export interface TypeProductDetailItem extends TypeProductListItem {
     links: any;
   };
   images: string[];
-}*/
+}

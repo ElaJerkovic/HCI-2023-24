@@ -23,10 +23,10 @@ export const products: TypeProductListItem[] = [
   {
     name: "Smart watch",
     id: 11,
-    listed: true,
+    //listed: true,
     description: "The best smartwatch around",
-    price: 0,
-    currencyCode: "USD",
+    //price: 0,
+    //currencyCode: "USD",
     categories: [
       {
         label: "technology",
@@ -34,15 +34,15 @@ export const products: TypeProductListItem[] = [
     ],
     heroImage:
       "https://images.ctfassets.net/g853qxkqyatt/2BJEQyoWH4zY0Y00QaPpvV/86e9301b6283bcbc970c08fe295afe13/simon-daoudi-2wFoa040m8g-unsplash.jpg",
-    images: [],
+    //images: [],
   },
   {
     name: "Robot",
     id: 10,
-    listed: true,
+    //listed: true,
     description: "Humanoid robot",
-    price: 2000,
-    currencyCode: "USD",
+    //price: 2000,
+   //currencyCode: "USD",
     categories: [
       {
         label: "technology",
@@ -50,12 +50,12 @@ export const products: TypeProductListItem[] = [
     ],
     heroImage:
       "https://images.ctfassets.net/g853qxkqyatt/1JRyetdH254lnAxCw1s7xW/263647fac9169765904b804fea89ef68/alex-knight-2EJCSULRwC8-unsplash.jpg",
-    images: [
+   /* images: [
       "https://images.ctfassets.net/g853qxkqyatt/6XZ9ZcYlNX38YH8qbvP9md/a9319d85ebc52b7f71ac5dc4c45e5670/jason-leung-HBGYvOKXu8A-unsplash.jpg",
       "https://images.ctfassets.net/g853qxkqyatt/3YeRmz3a49ujyIJtpazJV7/5b6787d528cb70a33a8813402ee10f02/owen-beard-K21Dn4OVxNw-unsplash.jpg",
       "https://images.ctfassets.net/g853qxkqyatt/5QFfczfrZFQkweBOgfARoc/db698c4bf03cca7d8d3349953b91cd2b/jason-leung-1DjbGRDh7-E-unsplash.jpg",
-    ],
-    richTextDescription: {
+    ],*/
+    /*richTextDescription: {
       json: {
         nodeType: "document",
         data: {},
@@ -304,15 +304,15 @@ export const products: TypeProductListItem[] = [
           ],
         },
       },
-    },
+    },*/
   },
   {
     name: "Chocolate cake 2",
     id: 8,
-    listed: true,
+    //listed: true,
     description: "Second best simple chocolate cake",
-    price: 0,
-    currencyCode: "USD",
+    //price: 0,
+    //currencyCode: "USD",
     categories: [
       {
         label: "food",
@@ -320,15 +320,15 @@ export const products: TypeProductListItem[] = [
     ],
     heroImage:
       "https://images.ctfassets.net/g853qxkqyatt/5dXVmx6xjeB9iUlf7XndEz/dc3b819e44faa90b702b7599668ca214/What_is_a_Healthy_Relationship_with_Food_-_Fulfilling_Nutrition.jpg",
-    images: [],
+    //images: [],
   },
   {
     name: "Suit jacket",
     id: 2,
-    listed: true,
+   // listed: true,
     description: "Nice suit jacket for a casual look.",
-    price: 0,
-    currencyCode: "USD",
+    //price: 0,
+    //currencyCode: "USD",
     categories: [
       {
         label: "clothing",
@@ -336,15 +336,15 @@ export const products: TypeProductListItem[] = [
     ],
     heroImage:
       "https://images.ctfassets.net/g853qxkqyatt/4xFeEaUneNqp1RUTmbYD0N/748b2707226bb43b3f8a124aa314a007/gez-xavier-mansfield-b34E1vh1tYU-unsplash.jpg",
-    images: [],
+   // images: [],
   },
   {
     name: "Lancome lipstick",
     id: 5,
-    listed: true,
+   // listed: true,
     description: "Red Lancome lipstick.",
-    price: 0,
-    currencyCode: "USD",
+   // price: 0,
+   // currencyCode: "USD",
     categories: [
       {
         label: "cosmetics",
@@ -352,6 +352,6 @@ export const products: TypeProductListItem[] = [
     ],
     heroImage:
       "https://images.ctfassets.net/g853qxkqyatt/44slOl7YlUHYXzg6BLi4SN/a91fb323ed73235c704bc321e3ba4c3a/amanda-dalbjorn-t7WrWaewbtw-unsplash.jpg",
-    images: [],
+    //images: [],
   },
 ];
