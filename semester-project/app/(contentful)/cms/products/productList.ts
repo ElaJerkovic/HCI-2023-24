@@ -22,7 +22,7 @@ export const categories: TypeCategory[] = [
 export const products: TypeProductListItem[] = [
   {
     name: "Smart watch",
-    id: 11,
+    id: '11',
     listed: true,
     description: "The best smartwatch around",
     price: 0,
@@ -38,7 +38,7 @@ export const products: TypeProductListItem[] = [
   },
   {
     name: "Robot",
-    id: 10,
+    id: '10',
     listed: true,
     description: "Humanoid robot",
     price: 2000,
