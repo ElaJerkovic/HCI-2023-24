@@ -20,13 +20,12 @@ const pages: Page[] = [
   { href: "/reviews", title: "Reviews" },
   { href: "/contact", title: "Contact" },
   { href: "/profile", title: "Profile" },
-  { href: "/cms/products", title: "Products" }
 ];
 
 const NavBar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  
+
   if (pathname.startsWith('/studio')) return null
 
 
