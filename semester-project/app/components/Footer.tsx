@@ -4,7 +4,7 @@ import Icons from "./Icons";
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-800 text-white font-lato p-4">
+    <footer className="bg-zinc-800 text-white font-lato p-4 mt-3">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
         <div className="mb-4 lg:mb-0">
           <Logo dark/> 
