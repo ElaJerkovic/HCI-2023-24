@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Edit, ShoppingBag } from "lucide-react"
-import { useShoppingCart } from "use-shopping-cart"
+//import { useShoppingCart } from "use-shopping-cart"
 
 import {Button} from "../components/ui/button"
 import { Input } from "../components/ui/input"
@@ -31,13 +31,13 @@ function SiteHeader() {
           />
         </form>
         <div className="flex items-center space-x-1">
-          <Link href="/cart">
+          {/* <Link href="/cart">
             <Button>
               <ShoppingBag className="h-5 w-5" />
               <span className="ml-2 text-sm font-bold">0</span>
               <span className="sr-only">Cart</span>
             </Button>
-          </Link>
+          </Link> */}
           {process.env.NODE_ENV === 'development' && (
             <Link href='/studio'>
                 <Button>
