@@ -7,6 +7,7 @@ const nextConfig = {
         "picsum.photos",
         "via.placeholder.com",
         "unsplash.com",
+        "cdn.sanity.io",
       ],
     },
   };

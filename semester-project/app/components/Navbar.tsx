@@ -4,6 +4,7 @@ import Logo from "../components/Logo";
 import MainNav from "../components/MainNav";
 import Hamburger from "../components/Hamburger";
 import MobileNav from "../components/MobileNav";
+import { usePathname } from "next/navigation";
 
 export type Page = {
   href: string;
@@ -22,11 +23,13 @@ const pages: Page[] = [
 ];
 
 const NavBar = () => {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/studio')) return null
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="w-screen flex flex-col items-center justify-between fixed top-0 bg-white z-50">
-      <div className="mt-5 mb-4"><Logo /></div>
+    <div className="w-screen flex flex-col items-center justify-between fixed bg-white z-50">
       <div className="flex items-center justify-center w-full">
         <MainNav pages={pages} />
         <Hamburger open={open} clickHandler={setOpen} />

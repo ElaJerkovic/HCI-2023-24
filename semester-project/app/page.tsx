@@ -3,8 +3,10 @@ import FeaturesSection from "./_components/FeaturesSection";
 import CtaSection from "./_components/CtaSection";
 import PromotionSection from "./_components/PromotionSection";
 import FeaturedSection from "./_components/FeaturedSection";
+import { seedSanityData } from "./lib/seed";
 
-export default function Home() {
+export default async function Home() {
+  await seedSanityData();
   return (
     <main className="flex flex-col justify-between items-center">
       <HeroSection />

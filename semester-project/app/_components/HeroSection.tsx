@@ -12,7 +12,7 @@ const images: HeroImageObject[] = [
 ];
 
 const HeroSection = () => (
-    <section className="flex w-screen mt-28" >
+    <section className="flex w-screen" >
       
       <div>
         {images.map((imageObj, index) => (
