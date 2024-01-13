@@ -25,9 +25,10 @@ const pages: Page[] = [
 
 const NavBar = () => {
   const pathname = usePathname();
-
-  if (pathname.startsWith('/studio')) return null
   const [open, setOpen] = useState(false);
+  
+  if (pathname.startsWith('/studio')) return null
+
 
   return (
     <div className="w-screen flex flex-col items-center justify-between fixed bg-white z-50">
