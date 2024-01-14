@@ -7,5 +7,5 @@
 ![shop page](https://github.com/ElaJerkovic/HCI-2023-24/assets/92401418/6eb90c1b-54d3-4431-93ad-02feb2042912)
 
 **Problems**
-- having problems with deployment
-- when going to shop page: "Application error: a client-side exception has occurred (see the browser console for more information)."
+- had problems with deployment
+- when going to shop page: "Application error: a client-side exception has occurred (see the browser console for more information)."- fixed
