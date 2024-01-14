@@ -8,4 +8,4 @@
 
 **Problems**
 - had problems with deployment
-- when going to shop page: "Application error: a client-side exception has occurred (see the browser console for more information)."- fixed
+- when going to shop page: "Application error: a client-side exception has occurred (see the browser console for more information)."
