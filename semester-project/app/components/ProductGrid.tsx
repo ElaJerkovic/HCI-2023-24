@@ -14,7 +14,7 @@ interface Props {
   products: SanityProduct[]
 }
 
-export function ProductGrid({products}: Props) {
+function ProductGrid({products}: Props) {
   if (products.length === 0) {
     return (
       <div className="mx-auto grid h-40 w-full place-items-center rounded-md border-2 border-dashed bg-gray-50 py-10 text-center dark:bg-gray-900">
@@ -33,23 +33,27 @@ export function ProductGrid({products}: Props) {
       {products && products.map((product) => (
         <Link key={product._id} href={`/products/${product.slug}`} className="group text-sm">
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
-           <Image
-           placeholder="blur"
-           blurDataURL={`data:image/svg+xml;base64, ${toBase64(
-            shimmer(255,280)
-            )}`}
-              src={urlForImage(product.images[0]).url()}
-              alt={product.name}
-              width={255}
-              height={280}
-              className="h-full w-full object-cover object-center"
-            /> 
-
+            {product.images && product.images.length > 0 ? (
+              <Image
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64, ${toBase64(shimmer(255, 280))}`}
+                src={urlForImage(product.images[0]).url()}
+                alt={product.name}
+                width={255}
+                height={280}
+                className="h-full w-full object-cover object-center"
+              />
+            ) : (
+              // You can provide a placeholder or fallback image here
+              <div className="h-full w-full bg-gray-300"></div>
+            )}
           </div>
           <h3 className="mt-4 font-medium">{product.name}</h3>
-          <p className="mt-2 font-medium">{formatCurrencyString({currency: product.currency, value: product.price,})}</p>
+          <p className="mt-2 font-medium">{formatCurrencyString({ currency: product.currency, value: product.price })}</p>
         </Link>
       ))}
     </div>
   )
 }
+
+export default ProductGrid

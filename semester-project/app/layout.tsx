@@ -4,7 +4,7 @@ import './globals.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import "typeface-lato";
-import Providers from './components/providers'
+import Providers from './components/Providers'
 import SiteHeader from './components/SiteHeader'
 
 

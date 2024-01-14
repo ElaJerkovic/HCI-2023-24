@@ -23,7 +23,7 @@ export interface SanityProduct extends Omit<InventoryProduct, "images"> {
 }
 
 export const inventory: InventoryProduct[] = [
-  {
+ /* {
     id: "e882fe48-253c-40fb-8155-51b47b063c1a",
     sku: "braided_leather_belt_1",
     name: "Braided Leather Belt",
@@ -102,5 +102,5 @@ export const inventory: InventoryProduct[] = [
     categories: ["sunglasses"],
     colors: ["black"],
     currency: "USD",
-  },
+  },*/
 ]

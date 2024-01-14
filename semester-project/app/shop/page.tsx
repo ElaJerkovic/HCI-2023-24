@@ -4,9 +4,9 @@ import { fontSans } from "@/app/lib/fonts"
 import { SanityProduct } from "@/app/config/inventory"
 import { siteConfig } from "@/app/config/site"
 import { cn } from "@/app/lib/utils"
-import { ProductFilters } from "@/app/components/product-filters"
-import { ProductGrid } from "@/app/components/product-grid"
-import { ProductSort } from "@/app/components/product-sort"
+import ProductFilters from "@/app/components/ProductFilters"
+import ProductGrid from "@/app/components/ProductGrid"
+import ProductSort from "@/app/components/ProductSort"
 import { seedSanityData } from "../lib/seed"
 import { StringFieldProps } from "sanity"
 
@@ -21,7 +21,7 @@ interface Props {
   }
 }
 
-export default async function Page({searchParams}: Props) {
+ async function Page({searchParams}: Props) {
   const { date = "desc", price, color, category, metal } = searchParams
   const priceOrder = price
    ? `| order(price ${price})`
@@ -88,3 +88,5 @@ export default async function Page({searchParams}: Props) {
     </div>
   )
 }
+
+export default Page;

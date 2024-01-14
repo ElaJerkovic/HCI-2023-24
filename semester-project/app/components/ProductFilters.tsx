@@ -48,7 +48,7 @@ const filters = [
   },
 ]
 
-export function ProductFilters() {
+function ProductFilters() {
 const searchParams = useSearchParams()
 const router = useRouter()
 const searchValues = Array.from(searchParams.entries())
@@ -106,3 +106,4 @@ const searchValues = Array.from(searchParams.entries())
     </form>
   )
 }
+export default ProductFilters

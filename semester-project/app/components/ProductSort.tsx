@@ -18,7 +18,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/app/components/ui/sheet"
-import { ProductFilters } from "@/app/components/product-filters"
+import ProductFilters from "@/app/components/ProductFilters"
 import { Value } from "@radix-ui/react-select"
 
 const sortOptions = [
@@ -27,7 +27,7 @@ const sortOptions = [
   { name: "Price, high to low", value: "shop/?price=desc" },
 ]
 
-export function ProductSort() {
+function ProductSort() {
   const router = useRouter()
   return (
     <div className="flex items-center">
@@ -61,3 +61,4 @@ export function ProductSort() {
     </div>
   )
 }
+export default ProductSort

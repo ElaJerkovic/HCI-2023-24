@@ -2,9 +2,9 @@
 
 import { CartProvider } from "use-shopping-cart"
 
-import { Toaster } from "../components/ui/toaster"
-import { TailwindIndicator } from "../components/tailwind-indicator"
-import { ThemeProvider } from "../components/theme-provider"
+import { Toaster } from "./ui/toaster"
+import TailwindIndicator from "./TailwindIndicator"
+import ThemeProvider from "./ThemeProviders"
 
 interface Props {
   children: React.ReactNode
