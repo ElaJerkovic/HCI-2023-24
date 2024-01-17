@@ -23,7 +23,7 @@ export async function seedSanityData() {
   await seedSanityImages()
   console.log("Sanity data seeded")
 }
-
+/*
 async function seedSanityImages() {
   inventory.forEach(async (item: { images: any; id: string; name: string; }) => {
     let images: any[] = []
@@ -48,6 +48,30 @@ async function seedSanityImages() {
       .set({ "slug.current": slugify(item.name), images })
       .commit()
   })
+}*/
+async function seedSanityImages() {
+  await Promise.all(
+    inventory.map(async (item: { images: any; id: string; name: string }) => {
+      let images: any[] = [];
+      for (const image of item.images) {
+        const imageAssetResponse = await fetch(image);
+        const imageAssetBuffer = await imageAssetResponse.arrayBuffer();
+        const imageAsset = await client.assets.upload("image", Buffer.from(imageAssetBuffer));
+        images.push({
+          _key: imageAsset._id,
+          _type: "image",
+          asset: {
+            _type: "reference",
+            _ref: imageAsset._id,
+          },
+        });
+      }
+      await client
+        .patch(item.id)
+        .set({ "slug.current": slugify(item.name), images })
+        .commit();
+    })
+  );
 }
 
 function slugify(text: string) {

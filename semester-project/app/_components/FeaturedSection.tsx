@@ -40,9 +40,7 @@ const FeaturedSection = () => (
   <div className="flex justify-center bg-rose-100 w-full mt-5">
      <section className="container flex flex-col gap-5  items-center">
     <div className="text-center mt-4">
-      <h1 className="sm:hidden font-lato text-3xl font-semibold text-zinc-900">
-      Featured Products
-      </h1>
+    
       <h1 className="hidden sm:block font-lato text-3xl font-semibold text-zinc-900">
         Featured Products
       </h1>

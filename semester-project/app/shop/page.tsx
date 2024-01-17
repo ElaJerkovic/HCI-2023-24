@@ -52,6 +52,7 @@ interface Props {
     }`
     )
   console.log(products)
+  console.log(products.length)
   return (
     <div>
       <div className="px-4 pt-20 text-center">
