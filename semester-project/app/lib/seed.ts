@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client"
 
 export async function seedSanityData() {
   const transaction = client.transaction()
+
   inventory.forEach((item: { id: any; name: any; currency: any; description: any; price: any; sku: any; metals: any; colors: any; categories: any }) => {
     const product = {
       _type: "product",

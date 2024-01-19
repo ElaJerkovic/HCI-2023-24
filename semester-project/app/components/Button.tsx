@@ -20,9 +20,9 @@ const Button = ({
   const buttonClasses = cn(
     "transition duration-300 ease-in-out",
     "group flex items-center gap-2 text-lg max-w-min whitespace-nowrap",
-    "px-6 py-3 rounded-full font-lato font-medium",
+    "px-6 py-3 rounded-md font-lato font-medium",
     {
-      "bg-zinc-600 hover:bg-rose-400 text-white font-lato text: uppercase":
+      "bg-zinc-600 hover:bg-brand-mint-100 hover:text-zinc-700 text-white font-lato text: uppercase":
         zinc,
     },
     className

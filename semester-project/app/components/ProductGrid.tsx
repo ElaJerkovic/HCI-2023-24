@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
@@ -9,12 +7,29 @@ import { formatCurrencyString } from "use-shopping-cart"
 import { SanityProduct } from "@/app/config/inventory"
 import { shimmer, toBase64 } from "@/app/lib/image"
 import { form } from "sanity/desk"
+import { client } from "@/sanity/lib/client"
+import { simplifiedProduct } from "../interface"
 
 interface Props {
   products: SanityProduct[]
 }
+async function getData() {
+  const query = `*[_type == "product"] | order(_createdAt desc) {
+        _id,
+          price,
+        name,
+          "slug": slug.current,
+          "categoryName": category->name,
+          "imageUrl": images[0].asset->url
+      }`;
 
-function ProductGrid({products}: Props) {
+  const data = await client.fetch(query);
+
+  return data;
+}
+
+async function ProductGrid({products}: Props) {
+  const data: simplifiedProduct[] = await getData();
   if (products.length === 0) {
     return (
       <div className="mx-auto grid h-40 w-full place-items-center rounded-md border-2 border-dashed bg-gray-50 py-10 text-center dark:bg-gray-900">
@@ -30,26 +45,27 @@ function ProductGrid({products}: Props) {
 
   return (
     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-3 lg:gap-x-8">
-      {products && products.map((product) => (
+      {data.map((product) => (
         <Link key={product._id} href={`/products/${product.slug}`} className="group text-sm">
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
-            {product.images && product.images.length > 0 ? (
+            {product.imageUrl ? (
+              <Link href={`/product/${product.slug}`}>
               <Image
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64, ${toBase64(shimmer(255, 280))}`}
-                src={urlForImage(product.images[0]).url()}
-                alt={product.name}
-                width={255}
-                height={280}
-                className="h-full w-full object-cover object-center"
-              />
+                src={product.imageUrl}
+                alt="Product image"
+                className="w-full h-full object-cover object-center lg:h-full lg:w-full"
+                width={500}
+                height={500}
+              /></Link>
             ) : (
               // You can provide a placeholder or fallback image here
               <div className="h-full w-full bg-gray-300"></div>
             )}
           </div>
           <h3 className="mt-4 font-medium">{product.name}</h3>
-          <p className="mt-2 font-medium">{formatCurrencyString({ currency: product.currency, value: product.price })}</p>
+          <p className="mt-2 font-medium"> €{product.price} </p>
         </Link>
       ))}
     </div>

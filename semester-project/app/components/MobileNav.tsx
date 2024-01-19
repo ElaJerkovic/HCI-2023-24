@@ -21,7 +21,7 @@ const MobileNav = ({ pages, open, clickHandler }: MobileNavProps) => {
       )}
       onClick={() => clickHandler(!open)}
     >
-      <ul className="flex w-screen flex-col gap-8 items-center">
+      <ul className="flex w-screen flex-col gap-8 items-center ">
         {pages.map(({ href, title }) => (
           <li key={href}>
             <Link href={href}>

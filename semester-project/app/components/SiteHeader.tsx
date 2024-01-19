@@ -19,7 +19,12 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
-      <div className="mt-5 mb-4"><Logo /></div>
+      <div className="mt-5 mb-4">
+        <Link href="/">
+          <Logo />
+        </Link>
+          
+      </div>
         <form className="hidden items-center lg:inline-flex">
           <Input
             id="search"
@@ -31,13 +36,13 @@ function SiteHeader() {
           />
         </form>
         <div className="flex items-center space-x-1">
-          {/*<Link href="/cart">
+          <Link href="/cart">
             <Button>
               <ShoppingBag className="h-5 w-5" />
-              <span className="ml-2 text-sm font-bold">0</span>
-              <span className="sr-only">Cart</span>
+              <span className="ml-2 text-sm font-bold text-zinc-800">0</span>
+              {/* <span className="hidden sm:block ml-2 text-sm font-bold text-zinc-800">Cart</span> */}
             </Button>
-  </Link> */}
+          </Link> 
           {process.env.NODE_ENV === 'development' && (
             <Link href='/studio'>
                 <Button>
