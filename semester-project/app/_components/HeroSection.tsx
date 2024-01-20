@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import Link from "next/link";
 import { client, urlFor } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import { shimmer, toBase64 } from "../lib/image";
 
 
 async function getData() {
@@ -43,6 +44,8 @@ export default async function Hero() {
            {data && data.image1 && ( 
            <Link href="/shop">
               <Image
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64, ${toBase64(shimmer(500, 500))}`}
                 src={urlFor(data.image1).url()}
                 alt="Great Photo"
                 className="h-full w-full object-cover object-center"
