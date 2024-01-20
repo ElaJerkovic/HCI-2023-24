@@ -24,7 +24,7 @@ export default async function Hero() {
           <h1 className="mb-4 mt-4 ml-4 text-4xl font-bold text-zinc-800 sm:text-5xl md:mb-8 md:text-6xl">
             Handcrafted Polymer Clay Jewelry
           </h1>
-          <p className="max-w-md ml-4 leading-relaxed text-zinc-600 xl:text-lg">
+          <p className="max-w-md ml-4 leading-relaxed text-zinc-700 xl:text-lg">
             We sell only the most exclusive and high quality products for you.
           </p>
           <Link href="/shop">
