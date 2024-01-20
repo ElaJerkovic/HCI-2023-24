@@ -24,12 +24,12 @@ export const product = defineType({
             type: "array",
             of: [{ type: 'image'}]
         },
-        {
+        /*{
             name: "categories",
             title: "Categories",
             type: "array",
             of: [{ type: 'string'}]
-        },
+        },*/
         {
             name: "metals",
             title: "Metals",

@@ -24,7 +24,7 @@ async function getData() {
       }`;
 
   const data = await client.fetch(query);
-
+    console.log("sada",data);
   return data;
 }
 

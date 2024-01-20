@@ -5,7 +5,6 @@ export interface simplifiedProduct {
     slug: string;
     categoryName: string;
     name: string;
-    currency: string;
   }
   
   export interface fullProduct {
