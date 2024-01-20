@@ -1,8 +1,8 @@
 import Icons from "../components/Icons";
 
 const FeaturesSection = () => (
-    <section className="flex justify-center lg:container w-full">
-      <div className="flex flex-col md:flex-row justify-evenly w-full">
+    <section className="flex justify-center lg:container w-full my-4">
+      <div className="flex flex-col md:flex-row justify-evenly w-full mx-6">
         <div className="text-center lg:w-64 md:w-64 mb-8 md:mb-0">
           <ul className="flex flex-col items-center">
             <li className="self-center mb-2"><Icons.TruckIcon className="w-12" /></li>

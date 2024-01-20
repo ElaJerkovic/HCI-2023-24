@@ -52,7 +52,7 @@ async function ProductGrid({products}: Props) {
               <Link href={`/product/${product.slug}`}>
               <Image
                 placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64, ${toBase64(shimmer(255, 280))}`}
+                blurDataURL={`data:image/svg+xml;base64, ${toBase64(shimmer(500, 500))}`}
                 src={product.imageUrl}
                 alt="Product image"
                 className="w-full h-full object-cover object-center lg:h-full lg:w-full"
@@ -64,8 +64,8 @@ async function ProductGrid({products}: Props) {
               <div className="h-full w-full bg-gray-300"></div>
             )}
           </div>
-          <h3 className="mt-4 font-medium">{product.name}</h3>
-          <p className="mt-2 font-medium"> €{product.price} </p>
+          <h3 className="mt-4 font-semibold text-base text-zinc-700">{product.name}</h3>
+          <p className="mt-2 font-medium text-zinc-700"> €{product.price} </p>
         </Link>
       ))}
     </div>

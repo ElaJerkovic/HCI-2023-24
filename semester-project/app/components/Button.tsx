@@ -22,7 +22,7 @@ const Button = ({
     "group flex items-center gap-2 text-lg max-w-min whitespace-nowrap",
     "px-6 py-3 rounded-md font-lato font-medium",
     {
-      "bg-zinc-600 hover:bg-brand-mint-100 hover:text-zinc-700 text-white font-lato text: uppercase":
+      "bg-zinc-600 hover:bg-brand-pink-50 hover:text-zinc-700 text-white font-lato text: uppercase":
         zinc,
     },
     className

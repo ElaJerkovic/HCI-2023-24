@@ -1,7 +1,7 @@
 import { client } from "@/sanity/lib/client"
 import { groq } from "next-sanity"
 import { fontSans } from "@/app/lib/fonts"
-import { SanityProduct } from "@/app/config/inventory"
+
 import { siteConfig } from "@/app/config/site"
 import { cn } from "@/app/lib/utils"
 import ProductFilters from "@/app/components/ProductFilters"
@@ -20,7 +20,20 @@ interface Props {
     metal?: string
   }
 }
+async function getData() {
+  const query = `*[_type == "product"]| order(_createdAt desc) {
+        _id,
+          price,
+        name,
+          "slug": slug.current,
+          "categoryName": category->name,
+          "imageUrl": images[0].asset->url
+      }`;
 
+  const data = await client.fetch(query);
+
+  return data;
+}
  async function Page({searchParams}: Props) {
   const { date = "desc", price, color, category, metal } = searchParams
   const priceOrder = price
@@ -38,7 +51,8 @@ interface Props {
   const categoryFilter = category ? `&& "${category}" in categories` : ""
   const filter = `*[${productFilter}${colorFilter}${metalFilter}${categoryFilter}]`
 
-  const products = await client.fetch<SanityProduct[]>(
+  const products = await getData();
+  /*client.fetch<query>(
     groq `${filter} ${order}{
       _id,
       _createdAt,
@@ -50,7 +64,7 @@ interface Props {
       description,
       "slug": slug.current
     }`
-    )
+    )*/
   console.log(products)
   console.log(products.length)
   return (

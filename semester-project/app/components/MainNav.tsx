@@ -19,7 +19,7 @@ const MainNav = ({ pages }: { pages: Page[] }) => {
                   className={cn(
                     "uppercase whitespace-nowrap font-lato font-bold text-base px-5 py-3 rounded-2xl text-brand-zinc-50 hover:bg-zinc-100",
                     {
-                      "bg-zinc-200 pointer-events-none":
+                      "bg-brand-pink-50 pointer-events-none":
                         pathname === href,
                     }
                   )}

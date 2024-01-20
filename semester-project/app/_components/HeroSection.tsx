@@ -17,13 +17,13 @@ async function getData() {
 export default async function Hero() {
   const data = await getData();
   return (
-    <section className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 mt-16">
+    <section className="mx-auto bg-brand-mint-50 max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 mt-16">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
         <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
           <h1 className="mb-4 ml-4 text-4xl font-bold text-zinc-800 sm:text-5xl md:mb-8 md:text-6xl">
             Handcrafted Polymer Clay Jewelry
           </h1>
-          <p className="max-w-md ml-4 leading-relaxed text-gray-500 xl:text-lg">
+          <p className="max-w-md ml-4 leading-relaxed text-zinc-600 xl:text-lg">
             We sell only the most exclusive and high quality products for you.
           </p>
           <Link href="/shop">

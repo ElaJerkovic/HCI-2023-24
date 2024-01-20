@@ -13,7 +13,7 @@ export default async function Home() {
       <FeaturesSection/>
       <CtaSection/>
       <PromotionSection/>
-      <FeaturedSection/>
+      {/* <FeaturedSection/> */}
       
     </main>
   );
