@@ -95,7 +95,7 @@ export default async function Hero() {
           </Link>
         </div>
         
-        <div className="mb-12 mt-8 flex w-full md:mb-16 lg:w-1/2">
+        <div className="mb-12 mt-6 flex w-full md:mb-16 lg:w-3/6">
         
           <div className="relative top-12 z-10 rounded-lg md:top-16 lg:ml-0">
            {data && data.image1 && ( 
