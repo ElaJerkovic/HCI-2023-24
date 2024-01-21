@@ -15,10 +15,10 @@ export type Page = {
 const pages: Page[] = [
   { href: "/", title: "Home" },
   { href: "/shop", title: "Shop" },
-  { href: "/about", title: "About" },
+  //{ href: "/about", title: "About" },
   { href: "/blog", title: "Blog" },
   //{ href: "/reviews", title: "Reviews" },
-  //{ href: "/contact", title: "Contact" },
+  { href: "/contact", title: "Contact Us" },
   //{ href: "/profile", title: "Profile" },
 ];
 

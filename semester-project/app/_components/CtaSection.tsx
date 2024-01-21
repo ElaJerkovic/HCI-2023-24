@@ -35,10 +35,10 @@ export default async function Newest() {
             Our Newest products
           </h2>
 
-          <Link className="text-primary flex items-center gap-x-1" href="/shop">
+          <Link className="text-primary text-zinc-800 flex items-center gap-x-1" href="/shop">
             See All{" "}
             <span>
-              <ArrowRight />
+              <ArrowRight/>
             </span>
           </Link>
         </div>
@@ -61,18 +61,21 @@ export default async function Newest() {
 
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-zinc-700 font-semibold">
+                  <h3 className="text-base text-zinc-700 font-semibold">
                     <Link href={`/product/${product.slug}`}>
                       {product.name}
                     </Link>
                   </h3>
+                  <p className="text-sm font-medium text-zinc-800">
+                    €{product.price}
+                  </p>
                   <p className="mt-1 text-sm text-zinc-600">
                     {product.categoryName}
                   </p>
+                  
+                 
                 </div>
-                <p className="text-sm font-medium text-zinc-800">
-                  €{product.price}
-                </p>
+                
               </div>
             </div>
           ))}

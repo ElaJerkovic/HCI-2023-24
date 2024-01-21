@@ -9,6 +9,7 @@ import ProductGrid from "@/app/components/ProductGrid"
 import ProductSort from "@/app/components/ProductSort"
 import { seedSanityData } from "../lib/seed"
 import { StringFieldProps } from "sanity"
+import { Product } from "use-shopping-cart/core"
 
 
 interface Props {
@@ -20,8 +21,9 @@ interface Props {
     metal?: string
   }
 }
+
 async function getData() {
-  const query = `*[_type == "product"]| order(_createdAt desc) {
+  const query = `*[_type == "product"] {
         _id,
           price,
         name,
@@ -34,8 +36,9 @@ async function getData() {
 
   return data;
 }
+
  async function Page({searchParams}: Props) {
-  const { date = "desc", price, color, category, metal } = searchParams
+   const { date = "desc", price, color, category, metal } = searchParams
   const priceOrder = price
    ? `| order(price ${price})`
    : ""
@@ -45,14 +48,14 @@ async function getData() {
 
   const order = `${priceOrder}${dateOrder}`
 
-  const productFilter = `_type == "product" && !(_id in path("drafts.**"))`
+  const productFilter = `_type == "product" && references($categoryId)`
   const colorFilter = color ? `&& "${color}" in colors` : ""
   const metalFilter = metal ? `&& "${metal}" in metals` : ""
   const categoryFilter = category ? `&& "${category}" in categories` : ""
-  const filter = `*[${productFilter}${colorFilter}${metalFilter}${categoryFilter}]`
+  const filter = `*[${productFilter}${colorFilter}${metalFilter}${categoryFilter}]` 
 
   const products = await getData();
-  /*client.fetch<query>(
+  /* client.fetch(
     groq `${filter} ${order}{
       _id,
       _createdAt,
@@ -64,7 +67,20 @@ async function getData() {
       description,
       "slug": slug.current
     }`
-    )*/
+    ) */
+    client.fetch(
+      groq `${order}{
+        _id,
+        _createdAt,
+        name,
+        sku,
+        images,
+        currency,
+        price,
+        description,
+        "slug": slug.current
+      }`
+      ) 
   console.log(products)
   console.log(products.length)
   return (
@@ -75,11 +91,11 @@ async function getData() {
       </div>
       <div>
         <main className="mx-auto max-w-6xl px-6">
-          <div className="flex items-center justify-between border-b border-gray-200 pb-4 pt-24 dark:border-gray-800">
+          <div className="flex items-center justify-between border-b border-zinc-200 pb-4 pt-24">
             <h1 className="text-xl font-bold text-zinc-800 tracking-tight sm:text-2xl">
               {products.length} result{products.length  === 1 ? "" : "s"}
             </h1>
-            <ProductSort/>
+            <ProductSort/>  
           </div>
 
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
@@ -92,10 +108,10 @@ async function getData() {
               : "lg:grid-cols-[1fr_3fr]"
               )}>
               <div className="hidden lg:block">{/* Product filters */}
-                <ProductFilters/>
+                 <ProductFilters/> 
               </div>
               {/* Product grid */}
-              <ProductGrid products={products}/>
+              <ProductGrid products={products}/> 
             </div>
           </section>
         </main>
