@@ -27,9 +27,9 @@ const MobileNav = ({ pages, open, clickHandler }: MobileNavProps) => {
             <Link href={href}>
               <span
                 className={cn(
-                  "uppercase whitespace-nowrap rounded-2xl font-lato font-semibold text-base px-5 py-3 text-zinc-800 hover:bg-zinc-100",
+                  "uppercase whitespace-nowrap rounded-md font-lato font-semibold text-base px-5 py-3 text-zinc-800 hover:bg-zinc-100",
                   {
-                    "bg-zinc-200 text-brand-zinc-100 pointer-events-none":
+                    "bg-brand-pink-50 text-brand-zinc-100 pointer-events-none":
                       pathname === href,
                   }
                 )}

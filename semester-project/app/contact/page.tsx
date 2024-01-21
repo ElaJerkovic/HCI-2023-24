@@ -39,7 +39,7 @@ function Contact(){
           <h1 className="flex  justify-center text-zinc-800 p-14 text-4xl">
             Ask us anything!
           </h1>
-          <label htmlFor="name" className="block text-sm bg-white font-medium text-zinc-700">
+          <label htmlFor="name" className="block text-sm font-medium text-zinc-700">
             Your Name
           </label>
           <input

@@ -17,7 +17,7 @@ const MainNav = ({ pages }: { pages: Page[] }) => {
               <Link href={href}>
                 <span
                   className={cn(
-                    "uppercase whitespace-nowrap font-lato font-bold text-base px-5 py-3 rounded-2xl text-brand-zinc-50 hover:bg-zinc-100",
+                    "uppercase whitespace-nowrap font-lato font-bold text-base px-5 py-3 rounded-md text-brand-zinc-50 hover:bg-zinc-100",
                     {
                       "bg-brand-pink-50 pointer-events-none":
                         pathname === href,
