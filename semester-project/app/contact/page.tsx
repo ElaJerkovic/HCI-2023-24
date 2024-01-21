@@ -36,10 +36,10 @@ function Contact(){
     <div className="max-w-lg mx-auto px-4 py-8 my-8 bg-brand-mint-100">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <h1 className="flex justify-center text-zinc-800 p-14 text-4xl">
+          <h1 className="flex  justify-center text-zinc-800 p-14 text-4xl">
             Ask us anything!
           </h1>
-          <label htmlFor="name" className="block text-sm font-medium text-zinc-700">
+          <label htmlFor="name" className="block text-sm bg-white font-medium text-zinc-700">
             Your Name
           </label>
           <input
@@ -49,7 +49,7 @@ function Contact(){
             placeholder="Your name"
             value={name}
             onChange={handleNameChange}
-            className="mt-1 p-2 border border-zinc-300 rounded-md w-full"
+            className="mt-1 p-2 border bg-white text-zinc-800 border-zinc-300 rounded-md w-full"
           />
         </div>
 
@@ -64,7 +64,7 @@ function Contact(){
             name="email"
             value={email}
             onChange={handleEmailChange}
-            className="mt-1 p-2 border border-zinc-300 rounded-md w-full"
+            className="mt-1 p-2 border bg-white text-zinc-800 border-zinc-300 rounded-md w-full"
           />
         </div>
 
@@ -79,7 +79,7 @@ function Contact(){
             placeholder="Your message..."
             value={comment}
             onChange={handleMessageChange}
-            className="mt-1 p-2 border border-zinc-300 rounded-md w-full resize-none"
+            className="mt-1 p-2 border bg-white text-zinc-800 border-zinc-300 rounded-md w-full resize-none"
           ></textarea>
         </div>
 

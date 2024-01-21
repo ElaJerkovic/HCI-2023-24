@@ -38,7 +38,7 @@ function SiteHeader() {
         <div className="flex items-center space-x-1">
           <Link href="/cart">
             <Button>
-              <ShoppingBag className="h-5 w-5" />
+              <ShoppingBag className="h-5 w-5 bg-white z-20" />
               <span className="ml-2 text-sm font-bold text-zinc-800">0</span>
               {/* <span className="hidden sm:block ml-2 text-sm font-bold text-zinc-800">Cart</span> */}
             </Button>
