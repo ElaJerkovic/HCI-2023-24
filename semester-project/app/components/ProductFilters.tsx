@@ -12,25 +12,6 @@ import { Checkbox } from "@/app/components/ui/checkbox"
 
 const filters = [
   {
-    id: "categories",
-    name: "Categories",
-    options: [
-      { value: "earrings", label: "Earrings" },
-      { value: "rings", label: "Rings" },
-/*       { value: "necklaces", label: "Necklaces" },
-      { value: "ornaments", label: "Ornaments" },
-      { value: "keychains", label: "Keychains" }, */
-    ],
-  },
-  {
-    id: "metals",
-    name: "Silver or Gold",
-    options: [
-      { value: "gold", label: "Gold" },
-      { value: "silver", label: "Silver" },
-    ],
-  },
-  {
     id: "color",
     name: "Color",
     options: [
@@ -55,7 +36,7 @@ const searchValues = Array.from(searchParams.entries())
 
   return (
     <form className="sticky top-20">
-      <h3 className="sr-only">Categories</h3>
+      <h3 className="sr-only text-zinc-800">Filter by Color</h3>
 
       {filters.map((section, i) => (
         <Accordion key={i} type="single" collapsible>
@@ -63,18 +44,18 @@ const searchValues = Array.from(searchParams.entries())
             <AccordionTrigger>
               <span>
                 {section.name}{" "}
-                <span className="ml-1 text-xs font-extrabold text-uppercase text-gray-400"></span>
+                <span className="ml-1 text-xs font-extrabold text-zinc-400 text-uppercase"></span>
                   {searchParams.get(section.id)
                    ? `(${searchParams.get(section.id)})`
                     : ""}
               </span>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="space-y-4">
+              <div className="space-y-4 ">
                 {section.options.map((option, optionIdx) => (
                   <div
                     key={option.value}
-                    className="flex items-center space-x-2"
+                    className="flex items-center space-x-2 py-2 hover:bg-zinc-100 "
                   >
                     <Checkbox 
                       id={`filter-${section.id}-${optionIdx}`} 
@@ -93,7 +74,7 @@ const searchValues = Array.from(searchParams.entries())
                     }}/>
                     <label 
                     htmlFor={`filter-${section.id}-${optionIdx}`}
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    className="text-sm font-medium leading-none text-zinc-800 peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       {option.label}
                     </label>
                   </div>
