@@ -1,88 +1,74 @@
-import { client } from "@/sanity/lib/client"
-import { groq } from "next-sanity"
-import { fontSans } from "@/app/lib/fonts"
+import { client } from "@/sanity/lib/client";
+import { groq } from "next-sanity";
+import { fontSans } from "@/app/lib/fonts";
 
-import { siteConfig } from "@/app/config/site"
-import { cn } from "@/app/lib/utils"
-import ProductFilters from "@/app/components/ProductFilters"
-import ProductGrid from "@/app/components/ProductGrid"
-import ProductSort from "@/app/components/ProductSort"
-import { seedSanityData } from "../lib/seed"
-import { StringFieldProps } from "sanity"
-import { Product } from "use-shopping-cart/core"
-
+import { siteConfig } from "@/app/config/site";
+import { cn } from "@/app/lib/utils";
+import ProductFilters from "@/app/components/ProductFilters";
+import ProductGrid from "@/app/components/ProductGrid";
+import ProductSort from "@/app/components/ProductSort";
+import { seedSanityData } from "../lib/seed";
+import { StringFieldProps } from "sanity";
 
 interface Props {
   searchParams: {
-    date?: string
-    price?: string
-    color?: string
-    category?: string
-    metal?: string
-  }
+    date?: string;
+    price?: string;
+    color?: string;
+    category?: string;
+    metal?: string;
+  };
 }
 
-async function getData() {
-  const query = `*[_type == "product"] {
-        _id,
-          price,
-        name,
-          "slug": slug.current,
-          "categoryName": category->name,
-          "imageUrl": images[0].asset->url
-      }`;
+async function getData(filters: string, params: any) {
+  const query = groq`
+    *[_type == "product" ${filters}] {
+      _id,
+      price,
+      name,
+      "slug": slug.current,
+      "categoryName": category->name,
+      "imageUrl": images[0].asset->url
+    } ${params.order}
+  `;
 
-  const data = await client.fetch(query);
-
+  const data = await client.fetch(query, params);
   return data;
 }
 
- async function Page({searchParams}: Props) {
-   const { date = "desc", price, color, category, metal } = searchParams
-  const priceOrder = price
-   ? `| order(price ${price})`
-   : ""
-  const dateOrder = date
-   ? `| order(_createdAt ${date})`
-   : ""
+async function Page({ searchParams }: Props) {
+  const { date = "desc", price, color, category, metal } = searchParams;
 
-  const order = `${priceOrder}${dateOrder}`
+  let filters = "";
+  let params: any = { order: "" };
 
-  const productFilter = `_type == "product" && references($categoryId)`
-  const colorFilter = color ? `&& "${color}" in colors` : ""
-  const metalFilter = metal ? `&& "${metal}" in metals` : ""
-  const categoryFilter = category ? `&& "${category}" in categories` : ""
-  const filter = `*[${productFilter}${colorFilter}${metalFilter}${categoryFilter}]` 
+  if (price) {
+    params.order += `| order(price ${price}) `;
+  }
 
-  const products = await getData();
-  /* client.fetch(
-    groq `${filter} ${order}{
-      _id,
-      _createdAt,
-      name,
-      sku,
-      images,
-      currency,
-      price,
-      description,
-      "slug": slug.current
-    }`
-    ) */
-    client.fetch(
-      groq `${order}{
-        _id,
-        _createdAt,
-        name,
-        sku,
-        images,
-        currency,
-        price,
-        description,
-        "slug": slug.current
-      }`
-      ) 
-  console.log(products)
-  console.log(products.length)
+  if (date) {
+    params.order += `| order(_createdAt ${date}) `;
+  }
+
+  if (color) {
+    params.color = color;
+    filters += ` && "${color}" in colors`;
+  }
+
+  if (metal) {
+    params.metal = metal;
+    filters += ` && "${metal}" in metals`;
+  }
+
+  if (category) {
+    params.categoryId = category;
+    filters += ` && references($categoryId)`;
+  }
+
+  const products_filtered = await getData(filters, params);
+
+  console.log(products_filtered);
+
   return (
     <div>
       <div className="px-4 pt-20 text-center">
@@ -93,31 +79,33 @@ async function getData() {
         <main className="mx-auto max-w-6xl px-6">
           <div className="flex items-center justify-between border-b border-zinc-200 pb-4 pt-24">
             <h1 className="text-xl font-bold text-zinc-800 tracking-tight sm:text-2xl">
-              {products.length} result{products.length  === 1 ? "" : "s"}
+              {products_filtered.length} result{products_filtered.length === 1 ? "" : "s"}
             </h1>
-            <ProductSort/>  
+            <ProductSort />
           </div>
 
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
-            <div className={cn("grid grid-cols-1 gap-x-8 gap-y-10 ",
-             products.length > 0
-              ? "lg:grid-cols-4" 
-              : "lg:grid-cols-[1fr_3fr]"
-              )}>
-              <div className="hidden lg:block">{/* Product filters */}
-                 <ProductFilters/> 
+            <div
+              className={cn(
+                "grid grid-cols-1 gap-x-8 gap-y-10 ",
+                products_filtered.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
+              )}
+            >
+              <div className="hidden lg:block">
+                {/* Product filters */}
+                <ProductFilters />
               </div>
               {/* Product grid */}
-              <ProductGrid products={products}/> 
+              <ProductGrid products={products_filtered} />
             </div>
           </section>
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 export default Page;

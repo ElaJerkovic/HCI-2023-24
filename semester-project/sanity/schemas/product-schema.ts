@@ -24,12 +24,12 @@ export const product = defineType({
             type: "array",
             of: [{ type: 'image'}]
         },
-        /*{
+        {
             name: "categories",
             title: "Categories",
             type: "array",
             of: [{ type: 'string'}]
-        },*/
+        },
         {
             name: "metals",
             title: "Metals",
@@ -45,13 +45,13 @@ export const product = defineType({
         {
             name: "description",
             title: "Description",
-            type: "string",
+            type: "text",
         },
-       /* {
+        {
             name: "sku",
             title: "SKU",
             type: "string",
-        },*/
+        },
         {
             name: "currency",
             title: "Currency",
@@ -62,7 +62,7 @@ export const product = defineType({
             title: "Price",
             type: "number",
         },
-        {
+        /* {
             name: 'category',
             title: 'Product Category',
             type: 'reference',
@@ -71,7 +71,7 @@ export const product = defineType({
                 type: 'category',
               },
             ],
-          },
+          }, */
     ]
 })
 

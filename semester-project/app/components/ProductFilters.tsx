@@ -12,8 +12,8 @@ import { Checkbox } from "@/app/components/ui/checkbox"
 
 const filters = [
   {
-    id: "category",
-    name: "Category",
+    id: "categories",
+    name: "Categories",
     options: [
       { value: "earrings", label: "Earrings" },
       { value: "rings", label: "Rings" },

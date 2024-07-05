@@ -23,15 +23,15 @@ import { Value } from "@radix-ui/react-select"
 
 const sortOptions = [
   { name: "Newest", value: "shop/?date=desc" },
-  { name: "Price, low to high", value: "shop/?price=asc" },
-  { name: "Price, high to low", value: "shop/?price=desc" },
+  { name: "Price, low to high", value: "/shop?price=asc" },
+  { name: "Price, high to low", value: "/shop?price=desc" },
 ]
 
 function ProductSort() {
   const router = useRouter()
   return (
     <div className="flex items-center">
-      <Select onValueChange={value => router.replace(value)}>
+      <Select onValueChange={value => router.replace(value)}> 
         <SelectTrigger className="sm:w-[180px]">
           <SelectValue placeholder="Sort By" />
         </SelectTrigger>
