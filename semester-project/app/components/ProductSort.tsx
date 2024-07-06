@@ -46,7 +46,7 @@ function ProductSort() {
       <Sheet>
         <SheetContent className="w-[300px] text-zinc-800">
           <SheetHeader>
-            <SheetTitle>Categories</SheetTitle>
+            <SheetTitle>Filter by Color</SheetTitle>
             <SheetDescription>
               Narrow your product search using the options below.
             </SheetDescription>
