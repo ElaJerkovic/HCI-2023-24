@@ -37,7 +37,7 @@ async function getData(filters: string, params: any) {
 }
 
 async function Page({ searchParams }: Props) {
-  const { date = "desc", price, color, category, metal } = searchParams;
+  const { date = "desc", price, color } = searchParams;
 
   let filters = "";
   let params: any = { order: "" };
@@ -53,16 +53,6 @@ async function Page({ searchParams }: Props) {
   if (color) {
     params.color = color;
     filters += ` && "${color}" in colors`;
-  }
-
-  if (metal) {
-    params.metal = metal;
-    filters += ` && "${metal}" in metals`;
-  }
-
-  if (category) {
-    params.categoryId = category;
-    filters += ` && references($categoryId)`;
   }
 
   const products_filtered = await getData(filters, params);

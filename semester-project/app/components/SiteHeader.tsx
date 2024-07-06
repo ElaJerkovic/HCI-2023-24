@@ -9,11 +9,12 @@ import { Input } from "../components/ui/input"
 import MainNav from "../components/MainNav"
 import Logo from "./Logo"
 import { usePathname } from "next/navigation"
+import { useShoppingCart } from "use-shopping-cart"
 
 
 function SiteHeader() {
     const pathname = usePathname()
-
+    const {handleCartClick} = useShoppingCart()
     if (pathname.startsWith('/studio')) return null
     
   return (
@@ -36,13 +37,11 @@ function SiteHeader() {
           />
         </form>
         <div className="flex items-center space-x-1">
-          <Link href="/cart">
-            <Button>
+            <Button onClick={() => handleCartClick()}>
               <ShoppingBag className="h-5 w-5 relative bg-transparent  -z-50 stroke-zinc-800" />
               <span className="ml-2 text-sm font-bold text-zinc-800">0</span>
               {/* <span className="hidden sm:block ml-2 text-sm font-bold text-zinc-800">Cart</span> */}
             </Button>
-          </Link> 
           {process.env.NODE_ENV === 'development' && (
             <Link href='/studio'>
                 <Button>

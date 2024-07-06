@@ -6,6 +6,8 @@ import Footer from './components/Footer'
 import "typeface-lato";
 import Providers from './components/providers'
 import SiteHeader from './components/SiteHeader'
+import { ShoppingCart } from 'lucide-react'
+import ShoppingCartModal from './components/ShoppingCart'
 
 
 
@@ -28,8 +30,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-        <SiteHeader/>
-        <Navbar />
+          <ShoppingCartModal />
+          <SiteHeader />
+          <Navbar />
         {children}
         <Footer/>
         </Providers>
