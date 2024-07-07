@@ -24,11 +24,11 @@ export default async function Hero() {
         <div className=" mx-auto flex w-full md:mb-16 lg:w-1/2">
         
           <div className="relative sm:mb-200 top-12 sm-mt-0 mx-auto z-10 rounded-lg md:top-16 lg:ml-0">
-           {data && data.image2 && ( 
+           {data && data.image1 && ( 
               <Image
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64, ${toBase64(shimmer(255, 280))}`}
-                src={urlFor(data.image2).url()}
+                src={urlFor(data.image1).url()}
                 alt=""
                 className="h-full w-full object-cover object-center"
                 width={500}
