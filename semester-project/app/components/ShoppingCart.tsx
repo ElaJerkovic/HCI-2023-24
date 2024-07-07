@@ -3,6 +3,8 @@
 import { useShoppingCart } from "use-shopping-cart";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import Image from "next/image";
+import Button from "./Button";
+import Link from "next/link";
 
 export default function ShoppingCartModal() {
   const initialCartState = {
@@ -11,9 +13,10 @@ export default function ShoppingCartModal() {
   cartDetails: {},
 };
 
-  const { cartCount, shouldDisplayCart, handleCartClick , cartDetails, removeItem} = useShoppingCart()
+  const { cartCount, shouldDisplayCart, handleCartClick , clearCart, cartDetails, totalPrice, redirectToCheckout, removeItem} = useShoppingCart()
   console.log(cartCount)
   console.log("kkkkkk")
+
     return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90vw]">
@@ -66,6 +69,37 @@ export default function ShoppingCartModal() {
                 </>
                 )}
              </ul>     
+            </div>
+            <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+            <div className="flex justify-between text-base font-medium text-gray-900">
+              <p>Subtotal:</p>
+              <p>${totalPrice}</p>
+            </div>
+            <p className="mt-0.5 text-sm text-gray-500">
+              Shipping and taxes are calculated at checkout.
+            </p>
+
+              <div className="mt-6">
+                <Link href="/checkout">
+                  <Sheet></Sheet>
+                  <Button onClick={() => handleCartClick()} className="bg-zinc-600 hover:bg-brand-pink-50 hover:text-zinc-700 text-white font-lato text: uppercase">
+                    Checkout
+                  </Button>
+                </Link>
+
+            </div>
+
+            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <p>
+                OR{" "}
+                <button
+                  onClick={() => handleCartClick()}
+                  className=" font-medium text-primary hover:text-primary/80"
+                >
+                  Continue Shopping
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </SheetContent>
