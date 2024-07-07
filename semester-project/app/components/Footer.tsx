@@ -90,7 +90,7 @@ const FooterList = ({ title, items }: ListProps) => {
 };
 
 const Footer = () => (
-  <div className="bg-zinc-800">
+  <div className="bg-zinc-800 ">
     <div className="flex flex-col py-10 items-center gap-10 self-stretch md:max-lg:px-10">
       <div className="flex flex-col md:flex-row gap-10 justify-center items-center md:items-start self-stretch">
 

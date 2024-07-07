@@ -7,7 +7,7 @@ import successImG from '@/app/PngItem_511744.png'; // Update this with the corre
 
 const Hero = () => {
   return (
-    <section className="mx-auto bg-white max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 mt-4">
+    <section className="mx-auto min-h-screen bg-white max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 mt-4">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
         <div className="mx-auto flex w-full md:mb-16 lg:w-1/2">
           <div className="relative sm:mb-200 top-12 sm-mt-0 mx-auto z-10 rounded-lg md:top-16 lg:ml-0">

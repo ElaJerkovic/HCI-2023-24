@@ -60,7 +60,7 @@ async function Page({ searchParams }: Props) {
   console.log(products_filtered);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="px-4 pt-20 text-center">
         <h1 className="text-4xl font-bold text-zinc-800 tracking-normal">SHOP</h1>
         <p className="mx-auto mt-4 max-w-3xl text-zinc-600 text-base">{siteConfig.description}</p>

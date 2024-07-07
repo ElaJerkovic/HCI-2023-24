@@ -33,8 +33,8 @@ function Contact(){
   const handleSubmit = () => {};
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-8 my-8 bg-brand-mint-100">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-lg min-h-screen mx-auto px-4 py-8 my-8 ">
+      <form onSubmit={handleSubmit} className="space-y-4 bg-brand-mint-100 py-6 px-6">
         <div>
           <h1 className="flex  justify-center text-zinc-800 p-14 text-4xl">
             Ask us anything!

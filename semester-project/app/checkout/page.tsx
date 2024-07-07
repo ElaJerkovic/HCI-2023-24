@@ -43,11 +43,11 @@ function Contact() {
   };
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-8 my-8 bg-brand-mint-100">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-lg min-h-screen mx-auto px-4 py-8 my-8 ">
+      <form onSubmit={handleSubmit} className="space-y-4 py-6 px-6 bg-brand-mint-100">
         <div>
           <h1 className="flex justify-center text-zinc-800 p-14 text-4xl">
-            Ask us anything!
+            Checkout
           </h1>
           <label htmlFor="name" className="block text-sm font-medium text-zinc-700">
             Your Name
