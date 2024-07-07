@@ -19,29 +19,11 @@ async function getData() {
 export default async function Hero() {
   const data = await getData();
   return (
-    <section className="mx-auto bg-white max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 mt-16">
+    <section className="mx-auto bg-white max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 mt-4">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
-        <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/2 lg:pb-24 lg:pt-48">
-          <h1 className="mb-4 mt-4 mx-auto  text-6xl font-bold text-zinc-800 sm:text-5xl md:mb-8 md:text-6xl">
-            Success
-          </h1>
-          <p className="max-w-md mx-auto  leading-relaxed text-zinc-600 xl:text-lg">
-            Your order has been placed successfully. A confirmation email has been sent to you.
-          </p>
-          <Link href="/">
-            <Button
-              zinc
-              className="text-base xl:text-md xl:px-8 mt-8 mx-auto "
-              iconClassName="xl:w-3 xl:h-3"
-            >
-              Return to Homepage
-            </Button>
-          </Link>
-        </div>
+        <div className=" mx-auto flex w-full md:mb-16 lg:w-1/2">
         
-        <div className="mb-12 mt-6 mx-auto flex w-full md:mb-16 lg:w-1/2">
-        
-          <div className="relative top-12 mx-auto z-10 rounded-lg md:top-16 lg:ml-0">
+          <div className="relative sm:mb-200 top-12 sm-mt-0 mx-auto z-10 rounded-lg md:top-16 lg:ml-0">
            {data && data.image2 && ( 
               <Image
                 placeholder="blur"
@@ -57,6 +39,26 @@ export default async function Hero() {
           
         </div>
       
+        
+        <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/2 lg:pb-24 lg:pt-48">
+          <h1 className="mb-4 mt-4 mx-auto  text-6xl font-bold text-zinc-800 sm:text-4xl md:mb-8 md:text-6xl">
+            Thank you!
+          </h1>
+          <p className="max-w-lg mx-auto  leading-relaxed text-zinc-600 xl:text-lg">
+            Your order has been placed successfully. A confirmation email has been sent to you.
+          </p>
+          <Link href="/">
+            <Button
+              zinc
+              className="text-base xl:text-md xl:px-8 mt-8 mx-auto "
+              iconClassName="xl:w-3 xl:h-3"
+            >
+              Homepage
+            </Button>
+          </Link>
+        </div>
+        
+        
       </div>  
     </section>
   );

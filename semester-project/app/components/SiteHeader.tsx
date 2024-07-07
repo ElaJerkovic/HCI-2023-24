@@ -14,7 +14,7 @@ import { useShoppingCart } from "use-shopping-cart"
 
 function SiteHeader() {
     const pathname = usePathname()
-    const {handleCartClick} = useShoppingCart()
+    const {handleCartClick, cartCount} = useShoppingCart()
     if (pathname.startsWith('/studio')) return null
     
   return (
@@ -39,7 +39,7 @@ function SiteHeader() {
         <div className="flex items-center space-x-1">
             <Button onClick={() => handleCartClick()}>
               <ShoppingBag className="h-5 w-5 relative bg-transparent  -z-50 stroke-zinc-800" />
-              <span className="ml-2 text-sm font-bold text-zinc-800">0</span>
+            <span className="ml-2 text-sm font-bold text-zinc-800">{cartCount}</span>
               {/* <span className="hidden sm:block ml-2 text-sm font-bold text-zinc-800">Cart</span> */}
             </Button>
           {process.env.NODE_ENV === 'development' && (
