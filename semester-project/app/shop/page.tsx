@@ -1,8 +1,7 @@
-"use client";
-import React, { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { fontSans } from "@/app/lib/fonts";
+
 import { siteConfig } from "@/app/config/site";
 import { cn } from "@/app/lib/utils";
 import ProductFilters from "@/app/components/ProductFilters";
@@ -37,31 +36,28 @@ async function getData(filters: string, params: any) {
   return data;
 }
 
-const Page: React.FC<Props> = ({ searchParams }) => {
+async function Page({ searchParams }: Props) {
   const { date = "desc", price, color } = searchParams;
-  const [productsFiltered, setProductsFiltered] = useState([]);
 
-  useEffect(() => {
-    let filters = "";
-    let params: any = { order: "" };
+  let filters = "";
+  let params: any = { order: "" };
 
-    if (price) {
-      params.order += `| order(price ${price}) `;
-    }
+  if (price) {
+    params.order += `| order(price ${price}) `;
+  }
 
-    if (date) {
-      params.order += `| order(_createdAt ${date}) `;
-    }
+  if (date) {
+    params.order += `| order(_createdAt ${date}) `;
+  }
 
-    if (color) {
-      params.color = color;
-      filters += ` && "${color}" in colors`;
-    }
+  if (color) {
+    params.color = color;
+    filters += ` && "${color}" in colors`;
+  }
 
-    getData(filters, params).then(data => {
-      setProductsFiltered(data);
-    });
-  }, [date, price, color]);
+  const products_filtered = await getData(filters, params);
+
+  console.log(products_filtered);
 
   return (
     <div className="min-h-screen">
@@ -73,7 +69,7 @@ const Page: React.FC<Props> = ({ searchParams }) => {
         <main className="mx-auto max-w-6xl px-6">
           <div className="flex items-center justify-between border-b border-zinc-200 pb-4 pt-24">
             <h1 className="text-xl font-bold text-zinc-800 tracking-tight sm:text-2xl">
-              {productsFiltered.length} result{productsFiltered.length === 1 ? "" : "s"}
+              {products_filtered.length} result{products_filtered.length === 1 ? "" : "s"}
             </h1>
             <ProductSort />
           </div>
@@ -85,7 +81,7 @@ const Page: React.FC<Props> = ({ searchParams }) => {
             <div
               className={cn(
                 "grid grid-cols-1 gap-x-8 gap-y-10 ",
-                productsFiltered.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
+                products_filtered.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
               )}
             >
               <div className="hidden lg:block">
@@ -93,7 +89,7 @@ const Page: React.FC<Props> = ({ searchParams }) => {
                 <ProductFilters />
               </div>
               {/* Product grid */}
-              <ProductGrid products={productsFiltered} />
+              <ProductGrid products={products_filtered} />
             </div>
           </section>
         </main>
