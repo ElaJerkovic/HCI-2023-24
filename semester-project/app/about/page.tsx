@@ -11,9 +11,9 @@ async function getData() {
 export default async function About() {
   const data = await getData();
   return (
-    <section className="mx-auto min-h-screen bg-white lg:max-w-7xl mt-32 px-4 sm:pb-6 lg:px-8">
-      <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between">
-        <div className="w-full lg:w-1/2 mb-6 lg:mb-0 text-center lg:text-left">
+    <section className="mx-auto min-h-screen max-w-2xl sm:pb-6 lg:max-w-7xl lg:px-8 mt-16">
+      <div className="mb-8 flex flex-wrap justify-between md:mb-16">
+        <div className="mb-6 flex w-full text-center flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-28">
           <h1 className="text-6xl font-bold text-zinc-800 sm:text-5xl md:text-6xl mb-4">
             About Us
           </h1>
@@ -21,9 +21,9 @@ export default async function About() {
             We are two sisters and we started our journey making homemade jewelry out of polymer clay as a hobby. Our polymer clay pieces are lightweight, durable, and made with the utmost attention to detail. Our mission is simple: to create unique, high-quality jewelry that brings joy and a touch of whimsy to our customers’ lives. We believe in the power of handmade, and we are committed to maintaining the personal touch that makes our jewelry special. When you purchase a piece from us, you’re not just buying jewelry – you’re supporting a dream, a passion, and a small business built with love. Thank you for being a part of our journey and for allowing us to share our love for handmade jewelry with you.
           </p>
         </div>
+        
         <div className="w-full lg:w-1/2 flex justify-center items-center">
-          <div className="flex gap-6 bg-brand-mint-100 py-10 px-8 rounded-md">
-            {/* Display only one image on smaller screens */}
+          <div className="flex gap-6 py-24 bg-brand-mint-100  px-8 rounded-md">
             <div className="relative h-80 w-80 lg:h-96 lg:w-96 rounded-lg overflow-hidden hidden lg:block">
               {data && data.image1 && (
                 <Image
@@ -50,7 +50,8 @@ export default async function About() {
             </div>
           </div>
         </div>
+      
       </div>
-    </section>
+      </section>
   );
 }
