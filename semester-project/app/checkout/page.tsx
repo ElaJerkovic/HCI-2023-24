@@ -145,7 +145,7 @@ function Contact() {
         </div>
 
         <Link href="/success">
-          <Button onClick={handleSubmit} className="mt-4 bg-zinc-600 hover:bg-brand-pink-50 hover:text-zinc-700 text-white font-lato text-uppercase">
+          <Button onClick={clearCart} className="mt-4 bg-zinc-600 hover:bg-brand-pink-50 hover:text-zinc-700 text-white font-lato text-uppercase">
             Pay
           </Button>    
         </Link>
