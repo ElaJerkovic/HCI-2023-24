@@ -1,10 +1,10 @@
 "use client"
 import React, { SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
 import Button from "../components/Button";
-import Link from "next/link";
 import { useShoppingCart } from "use-shopping-cart";
 
-function Contact() {
+function Checkout() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -12,6 +12,7 @@ function Contact() {
   const [expDate, setExpDate] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const { clearCart } = useShoppingCart();
+  const router = useRouter();
 
   const handleNameChange = (e: { target: { value: SetStateAction<string> } }) => {
     setName(e.target.value);
@@ -37,9 +38,10 @@ function Contact() {
     setMobileNumber(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     clearCart();
-    // Handle the payment process here
+    router.push('/success');
   };
 
   return (
@@ -144,14 +146,12 @@ function Contact() {
           />
         </div>
 
-        <Link href="/success">
-          <Button onClick={clearCart} className="mt-4 bg-zinc-600 hover:bg-brand-pink-50 hover:text-zinc-700 text-white font-lato text-uppercase">
-            Pay
-          </Button>    
-        </Link>
+        <Button className="mt-4 bg-zinc-600 hover:bg-brand-pink-50 hover:text-zinc-700 text-white font-lato text-uppercase">
+          Pay
+        </Button>
       </form>
     </div>
   );
 }
 
-export default Contact;
+export default Checkout;
