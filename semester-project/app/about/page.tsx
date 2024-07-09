@@ -17,7 +17,7 @@ export default async function About() {
           <h1 className="text-6xl font-bold text-zinc-800 sm:text-5xl md:text-6xl mb-4">
             About Us
           </h1>
-          <p className="max-w-md bg-brand-mint-100 py-4 px-4 mx-auto mt-9 lg:mx-0 leading-relaxed text-zinc-600 xl:text-lg md:text-center lg:text-left">
+          <p className="max-w-md bg-brand-mint-100 rounded-md py-4 px-4 mx-auto mt-9 lg:mx-0 leading-relaxed text-zinc-600 xl:text-lg md:text-center lg:text-left">
             We are two sisters and we started our journey making homemade jewelry out of polymer clay as a hobby. Our polymer clay pieces are lightweight, durable, and made with the utmost attention to detail. Our mission is simple: to create unique, high-quality jewelry that brings joy and a touch of whimsy to our customers’ lives. We believe in the power of handmade, and we are committed to maintaining the personal touch that makes our jewelry special. When you purchase a piece from us, you’re not just buying jewelry – you’re supporting a dream, a passion, and a small business built with love. Thank you for being a part of our journey and for allowing us to share our love for handmade jewelry with you.
           </p>
         </div>
