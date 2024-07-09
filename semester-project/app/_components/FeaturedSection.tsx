@@ -61,7 +61,8 @@ const FeaturedSection = () => (
             alt={`Featured image ${index + 1}`}
             width={300}
             height={200}  
-            className="w-full h-56 object-cover rounded-t-lg"
+              className="w-full h-56 object-cover rounded-t-lg"
+              loading="lazy"
           />
           <div className="mt-3 text-center">
             <h2 className="text-md font-semibold font-lato text-zinc-800">

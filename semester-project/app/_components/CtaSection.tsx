@@ -55,7 +55,8 @@ export default async function Newest() {
                   alt="Product image"
                   className="w-full h-full object-cover object-center lg:h-full lg:w-full"
                   width={500}
-                  height={500}
+                    height={500}
+                    loading="lazy"
                 /></Link>
               </div>
 

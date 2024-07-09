@@ -25,7 +25,8 @@ const PromotionSection = () => (
           <Image
             src={imagePromotion}
             alt="Earrings Promotion"
-            className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-cover rounded-lg"
+          loading="lazy"
           />
           <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center font-lato text-white">
