@@ -13,3 +13,4 @@ References to class projects:
 - [Class project 7: Weekly progress](/class-projects/class-project-7/)
 - [Class project 8: Weekly progress](/class-projects/class-project-8/)
 - [Class project 9: Weekly progress](/class-projects/class-project-9/)
+- [LAST UPDATE](/class-projects/class-project-10/)
