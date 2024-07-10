@@ -1,5 +1,5 @@
 # Class Projects Related Information
-**link for Notion: https://www.notion.so/TEARRINGS-d0969256f6984d13861d09d3867667a6**
+**link for Notion: https://pouncing-tenor-896.notion.site/TEARRINGS-d0969256f6984d13861d09d3867667a6**
 
 References to class projects:
 **link for deployed app: https://webshop-tearringsdesigns.vercel.app/**
