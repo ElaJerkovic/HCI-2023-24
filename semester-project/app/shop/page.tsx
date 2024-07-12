@@ -62,8 +62,12 @@ const Page: React.FC<Props> = ({ searchParams }) => {
         filters += ` && "${color}" in colors`;
       }
 
+      console.log('Filters:', filters);
+      console.log('Params:', params);
+
       try {
         const products_filtered = await getData(filters, params);
+        console.log('Fetched products:', products_filtered);
         setProducts(products_filtered);
       } catch (error) {
         setError('Error fetching data');
@@ -110,10 +114,8 @@ const Page: React.FC<Props> = ({ searchParams }) => {
               )}
             >
               <div className="hidden lg:block">
-                {/* Product filters */}
                 <ProductFilters />
               </div>
-              {/* Product grid */}
               <ProductGrid products={products} />
             </div>
           </section>
