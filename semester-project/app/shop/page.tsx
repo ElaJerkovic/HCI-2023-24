@@ -1,13 +1,14 @@
-"use client";
-
-import React, { useEffect, useState } from 'react';
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import { fontSans } from "@/app/lib/fonts";
+
+import { siteConfig } from "@/app/config/site";
+import { cn } from "@/app/lib/utils";
 import ProductFilters from "@/app/components/ProductFilters";
 import ProductGrid from "@/app/components/ProductGrid";
 import ProductSort from "@/app/components/ProductSort";
-import { siteConfig } from "@/app/config/site";
-import { cn } from "@/app/lib/utils";
+import { seedSanityData } from "../lib/seed";
+import { StringFieldProps } from "sanity";
 
 interface Props {
   searchParams: {
@@ -19,7 +20,7 @@ interface Props {
   };
 }
 
-function getData(filters: string, params: any): Promise<any> {
+async function getData(filters: string, params: any) {
   const query = groq`
     *[_type == "product" ${filters}] {
       _id,
@@ -31,60 +32,32 @@ function getData(filters: string, params: any): Promise<any> {
     } ${params.order}
   `;
 
-  return client.fetch(query, params);
+  const data = await client.fetch(query, params);
+  return data;
 }
 
-const Page: React.FC<Props> = ({ searchParams }) => {
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+async function Page({ searchParams }: Props) {
+  const { date = "desc", price, color } = searchParams;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      console.log('Search Params:', searchParams);
+  let filters = "";
+  let params: any = { order: "" };
 
-      const { date = "desc", price, color } = searchParams;
-      let filters = "";
-      let params: any = { order: "" };
-
-      if (price) {
-        params.order += `| order(price ${price}) `;
-      }
-
-      if (date) {
-        params.order += `| order(_createdAt ${date}) `;
-      }
-
-      if (color) {
-        params.color = color;
-        filters += ` && "${color}" in colors`;
-      }
-
-      console.log('Filters:', filters);
-      console.log('Params:', params);
-
-      try {
-        const products_filtered = await getData(filters, params);
-        console.log('Fetched products:', products_filtered);
-        setProducts(products_filtered);
-      } catch (error) {
-        setError('Error fetching data');
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [searchParams]);
-
-  if (loading) {
-    return <div>Loading...</div>;
+  if (price) {
+    params.order += `| order(price ${price}) `;
   }
 
-  if (error) {
-    return <div>{error}</div>;
+  if (date) {
+    params.order += `| order(_createdAt ${date}) `;
   }
+
+  if (color) {
+    params.color = color;
+    filters += ` && "${color}" in colors`;
+  }
+
+  const products_filtered = await getData(filters, params);
+
+  console.log(products_filtered);
 
   return (
     <div className="min-h-screen">
@@ -96,7 +69,7 @@ const Page: React.FC<Props> = ({ searchParams }) => {
         <main className="mx-auto max-w-6xl px-6">
           <div className="flex items-center justify-between border-b border-zinc-200 pb-4 pt-24">
             <h1 className="text-xl font-bold text-zinc-800 tracking-tight sm:text-2xl">
-              {products.length} result{products.length === 1 ? "" : "s"}
+              {products_filtered.length} result{products_filtered.length === 1 ? "" : "s"}
             </h1>
             <ProductSort />
           </div>
@@ -108,19 +81,21 @@ const Page: React.FC<Props> = ({ searchParams }) => {
             <div
               className={cn(
                 "grid grid-cols-1 gap-x-8 gap-y-10 ",
-                products.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
+                products_filtered.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
               )}
             >
               <div className="hidden lg:block">
+                {/* Product filters */}
                 <ProductFilters />
               </div>
-              <ProductGrid products={products} />
+              {/* Product grid */}
+              <ProductGrid products={products_filtered} />
             </div>
           </section>
         </main>
       </div>
     </div>
   );
-};
+}
 
 export default Page;
