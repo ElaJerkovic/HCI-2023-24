@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import React, { useEffect, useState } from 'react';
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
@@ -19,22 +20,18 @@ interface Props {
 }
 
 function getData(filters: string, params: any): Promise<any> {
-  return new Promise((resolve, reject) => {
-    const query = groq`
-      *[_type == "product" ${filters}] {
-        _id,
-        price,
-        name,
-        "slug": slug.current,
-        "categoryName": category->name,
-        "imageUrl": images[0].asset->url
-      } ${params.order}
-    `;
+  const query = groq`
+    *[_type == "product" ${filters}] {
+      _id,
+      price,
+      name,
+      "slug": slug.current,
+      "categoryName": category->name,
+      "imageUrl": images[0].asset->url
+    } ${params.order}
+  `;
 
-    client.fetch(query, params)
-      .then(data => resolve(data))
-      .catch(error => reject(error));
-  });
+  return client.fetch(query, params);
 }
 
 const Page: React.FC<Props> = ({ searchParams }) => {
@@ -44,8 +41,9 @@ const Page: React.FC<Props> = ({ searchParams }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { date = "desc", price, color } = searchParams;
+      console.log('Search Params:', searchParams);
 
+      const { date = "desc", price, color } = searchParams;
       let filters = "";
       let params: any = { order: "" };
 
@@ -78,7 +76,7 @@ const Page: React.FC<Props> = ({ searchParams }) => {
     };
 
     fetchProducts();
-  }, [searchParams]); // useEffect će se pokrenuti svaki put kada se `searchParams` promijeni
+  }, [searchParams]);
 
   if (loading) {
     return <div>Loading...</div>;
