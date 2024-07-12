@@ -1,14 +1,12 @@
+"use client"
+import React, { useEffect, useState } from 'react';
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
-import { fontSans } from "@/app/lib/fonts";
-
-import { siteConfig } from "@/app/config/site";
-import { cn } from "@/app/lib/utils";
 import ProductFilters from "@/app/components/ProductFilters";
 import ProductGrid from "@/app/components/ProductGrid";
 import ProductSort from "@/app/components/ProductSort";
-import { seedSanityData } from "../lib/seed";
-import { StringFieldProps } from "sanity";
+import { siteConfig } from "@/app/config/site";
+import { cn } from "@/app/lib/utils";
 
 interface Props {
   searchParams: {
@@ -20,44 +18,71 @@ interface Props {
   };
 }
 
-async function getData(filters: string, params: any) {
-  const query = groq`
-    *[_type == "product" ${filters}] {
-      _id,
-      price,
-      name,
-      "slug": slug.current,
-      "categoryName": category->name,
-      "imageUrl": images[0].asset->url
-    } ${params.order}
-  `;
+function getData(filters: string, params: any): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const query = groq`
+      *[_type == "product" ${filters}] {
+        _id,
+        price,
+        name,
+        "slug": slug.current,
+        "categoryName": category->name,
+        "imageUrl": images[0].asset->url
+      } ${params.order}
+    `;
 
-  const data = await client.fetch(query, params);
-  return data;
+    client.fetch(query, params)
+      .then(data => resolve(data))
+      .catch(error => reject(error));
+  });
 }
 
-async function Page({ searchParams }: Props) {
-  const { date = "desc", price, color } = searchParams;
+const Page: React.FC<Props> = ({ searchParams }) => {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  let filters = "";
-  let params: any = { order: "" };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { date = "desc", price, color } = searchParams;
 
-  if (price) {
-    params.order += `| order(price ${price}) `;
+      let filters = "";
+      let params: any = { order: "" };
+
+      if (price) {
+        params.order += `| order(price ${price}) `;
+      }
+
+      if (date) {
+        params.order += `| order(_createdAt ${date}) `;
+      }
+
+      if (color) {
+        params.color = color;
+        filters += ` && "${color}" in colors`;
+      }
+
+      try {
+        const products_filtered = await getData(filters, params);
+        setProducts(products_filtered);
+      } catch (error) {
+        setError('Error fetching data');
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [searchParams]); // useEffect će se pokrenuti svaki put kada se `searchParams` promijeni
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  if (date) {
-    params.order += `| order(_createdAt ${date}) `;
+  if (error) {
+    return <div>{error}</div>;
   }
-
-  if (color) {
-    params.color = color;
-    filters += ` && "${color}" in colors`;
-  }
-
-  const products_filtered = await getData(filters, params);
-
-  console.log(products_filtered);
 
   return (
     <div className="min-h-screen">
@@ -69,7 +94,7 @@ async function Page({ searchParams }: Props) {
         <main className="mx-auto max-w-6xl px-6">
           <div className="flex items-center justify-between border-b border-zinc-200 pb-4 pt-24">
             <h1 className="text-xl font-bold text-zinc-800 tracking-tight sm:text-2xl">
-              {products_filtered.length} result{products_filtered.length === 1 ? "" : "s"}
+              {products.length} result{products.length === 1 ? "" : "s"}
             </h1>
             <ProductSort />
           </div>
@@ -81,7 +106,7 @@ async function Page({ searchParams }: Props) {
             <div
               className={cn(
                 "grid grid-cols-1 gap-x-8 gap-y-10 ",
-                products_filtered.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
+                products.length > 0 ? "lg:grid-cols-4" : "lg:grid-cols-[1fr_3fr]"
               )}
             >
               <div className="hidden lg:block">
@@ -89,13 +114,13 @@ async function Page({ searchParams }: Props) {
                 <ProductFilters />
               </div>
               {/* Product grid */}
-              <ProductGrid products={products_filtered} />
+              <ProductGrid products={products} />
             </div>
           </section>
         </main>
       </div>
     </div>
   );
-}
+};
 
 export default Page;
